@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hospital Patient and Cost Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F5FB;--card:#fff;--ink:#1C1F3A;--mute:#6A6D8A;--line:#E3E2F0;--a:#E5527A;--b:#3B3F8F;--c:#2BA896;--soft:#ECEBF8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12132A;--card:#1B1D3B;--ink:#EEEFFA;--mute:#9A9DC0;--line:#2D305A;--a:#FF7094;--b:#8C91F2;--c:#4FD1BC;--soft:#25284D}}
+:root[data-theme="dark"]{--bg:#12132A;--card:#1B1D3B;--ink:#EEEFFA;--mute:#9A9DC0;--line:#2D305A;--a:#FF7094;--b:#8C91F2;--c:#4FD1BC;--soft:#25284D}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Figtree,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
+.top b{font-family:Fraunces,serif;font-size:20px}
+.top button{font:inherit;font-size:13px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:20px;padding:6px 14px;cursor:pointer}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:end;margin-bottom:36px}
+h1{font-family:Fraunces,serif;font-weight:700;font-size:clamp(34px,5.4vw,60px);line-height:1.04;letter-spacing:-.02em;margin:0}
+.hero p{margin:12px 0 0;color:var(--mute);max-width:46ch}
+.cities{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cities div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.cities b{font-family:Fraunces,serif;font-size:28px;display:block;line-height:1}.cities span{font-size:13px;color:var(--mute)}
+.cities div.hi{background:var(--b);color:#fff;border-color:var(--b)}.cities div.hi span{color:#D9DBFF}
+.layout{display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:start}
+.side{position:sticky;top:16px;display:flex;flex-direction:column;gap:12px}
+.dep{font:inherit;text-align:left;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:20px 22px;width:100%;display:block;cursor:pointer;transition:border-color .15s}
+.dep:hover{border-color:var(--b)}
+.dep[aria-pressed=true]{border-color:var(--a);box-shadow:0 0 0 2px var(--a) inset}
+.dep .nm{display:block;font-weight:700;font-size:18px}.dep .cost{display:block;font-family:Fraunces,serif;font-size:30px;font-weight:700;line-height:1.15;margin:4px 0 2px;color:var(--b)}.dep small{display:block;color:var(--mute);font-size:14px}
+.dep i{display:block;height:8px;border-radius:3px;background:var(--soft);margin-top:14px;overflow:hidden}.dep i u{display:block;height:100%;background:var(--b);border-radius:3px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.panel h2{font-family:Fraunces,serif;font-size:32px;margin:0 0 4px;font-weight:700}
+.insight{color:var(--mute);margin:0 0 22px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
+.stats div{background:var(--soft);border-radius:12px;padding:12px 14px}.stats b{display:block;font-size:22px;font-weight:700}.stats span{font-size:13px;color:var(--mute)}
+.g3{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;margin-bottom:26px}
+h3{font-size:15px;margin:0 0 12px;font-weight:700}
+.hist{display:flex;align-items:flex-end;gap:8px;height:150px;border-bottom:1px solid var(--line)}
+.hist div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;font-size:12px;color:var(--mute)}
+.hist u{display:block;width:100%;background:var(--b);border-radius:6px 6px 0 0;min-height:2px;transition:height .45s cubic-bezier(.2,.7,.2,1)}
+.hist+.lab{display:flex;gap:8px;font-size:12px;color:var(--mute);margin-top:4px}.lab span{flex:1;text-align:center}
+.bar{display:grid;grid-template-columns:74px 1fr 28px;gap:10px;align-items:center;font-size:14px;margin-bottom:8px}
+.bar i{height:12px;background:var(--soft);border-radius:6px;overflow:hidden}.bar u{display:block;height:100%;background:var(--c);border-radius:6px;transition:width .45s}
+.gen{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:16px 0 6px}.gen u{display:block;transition:width .45s}
+.genl{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:13px;color:var(--mute);padding:8px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap;user-select:none}
+th:hover{color:var(--ink)}td{padding:9px 8px;border-bottom:1px solid var(--line)}.r{text-align:right}
+.tag{display:inline-block;padding:2px 9px;border-radius:10px;background:var(--soft);font-size:12px}
+button:focus-visible,th:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+footer{margin-top:30px;font-size:13px;color:var(--mute)}
+@media(max-width:860px){.hero,.layout,.g3{grid-template-columns:1fr}.side{position:static;flex-direction:row;overflow-x:auto;padding-bottom:6px}.dep{min-width:230px;width:auto}.stats{grid-template-columns:1fr 1fr}.panel{padding:18px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><b>Hospital overview</b><button id="theme">Dark mode</button></div>
+  <div class="hero">
+    <div><h1 id="h1"></h1><p id="hp"></p></div>
+    <div class="cities" id="cities" aria-label="Patients by city"></div>
+  </div>
+  <div class="layout">
+    <div class="side" id="side" role="group" aria-label="Choose a department"></div>
+    <div class="panel">
+      <h2 id="title"></h2><p class="insight" id="ins"></p>
+      <div class="stats" id="stats"></div>
+      <div class="g3">
+        <div><h3>Patients by age</h3><div class="hist" id="hist"></div><div class="lab" id="lab"></div></div>
+        <div><h3>Patients by city</h3><div id="cbars"></div><div class="gen" id="gen"></div><div class="genl" id="genl"></div></div>
+      </div>
+      <h3>Patients <span style="font-weight:400;color:var(--mute)">(click a heading to sort)</span></h3>
+      <div class="tw"><table><thead><tr id="thead"></tr></thead><tbody id="tb"></tbody></table></div>
+    </div>
+  </div>
+  <footer>Data: hospital.db, 50 patients across 4 departments and 4 cities. Amounts in rupees.</footer>
+</div>
+<script>
+const R=[[1001,29,"Female","Orthopedic",35810,"indore"],[1002,56,"Male","General",31098,"indore"],[1003,35,"Female","General",45145,"bhopal"],[1004,20,"Male","Neurology",13593,"jabalpur"],[1005,69,"Female","Cardiology",46980,"itarsi"],[1006,79,"Female","Cardiology",40984,"bhopal"],[1007,48,"Male","Cardiology",26861,"jabalpur"],[1008,45,"Female","Cardiology",42065,"jabalpur"],[1009,49,"Male","General",31560,"jabalpur"],[1010,68,"Male","General",44334,"indore"],[1011,49,"Female","Orthopedic",40582,"jabalpur"],[1012,69,"Male","Orthopedic",38302,"itarsi"],[1013,78,"Male","Neurology",8680,"bhopal"],[1014,28,"Male","Cardiology",49866,"jabalpur"],[1015,29,"Female","Cardiology",34118,"indore"],[1016,20,"Female","General",9451,"bhopal"],[1017,62,"Male","Orthopedic",22490,"bhopal"],[1018,60,"Male","Orthopedic",39878,"bhopal"],[1019,74,"Male","Neurology",18675,"itarsi"],[1020,56,"Female","Orthopedic",30973,"itarsi"],[1021,71,"Male","General",11109,"itarsi"],[1022,36,"Female","Orthopedic",27253,"bhopal"],[1023,56,"Female","Cardiology",38227,"bhopal"],[1024,67,"Male","Orthopedic",33118,"itarsi"],[1025,31,"Female","Orthopedic",41261,"itarsi"],[1026,74,"Female","Orthopedic",49811,"indore"],[1027,44,"Male","Cardiology",26397,"itarsi"],[1028,63,"Female","General",32231,"indore"],[1029,78,"Male","Neurology",16947,"itarsi"],[1030,53,"Male","Neurology",32360,"indore"],[1031,28,"Male","Orthopedic",31341,"itarsi"],[1032,56,"Male","Cardiology",20433,"jabalpur"],[1033,34,"Male","Cardiology",41197,"itarsi"],[1034,69,"Female","General",37171,"indore"],[1035,71,"Male","Cardiology",33395,"jabalpur"],[1036,74,"Female","General",43471,"bhopal"],[1037,33,"Male","Neurology",28176,"indore"],[1038,25,"Male","Neurology",29277,"indore"],[1039,33,"Male","Neurology",40144,"jabalpur"],[1040,71,"Male","Orthopedic",21796,"bhopal"],[1041,45,"Male","General",6279,"bhopal"],[1042,33,"Male","Orthopedic",9973,"itarsi"],[1043,48,"Male","Orthopedic",45478,"itarsi"],[1044,42,"Female","General",18435,"itarsi"],[1045,50,"Female","Cardiology",22369,"bhopal"],[1046,50,"Male","General",16929,"itarsi"],[1047,45,"Female","Orthopedic",11350,"bhopal"],[1048,32,"Female","Cardiology",26717,"jabalpur"],[1049,21,"Male","Orthopedic",25414,"itarsi"],[1050,51,"Male","Orthopedic",26517,"itarsi"]];
+const $=i=>document.getElementById(i),cap=s=>s[0].toUpperCase()+s.slice(1),inr=n=>"₹"+Math.round(n).toLocaleString("en-IN"),sum=(a,f)=>a.reduce((s,x)=>s+f(x),0);
+const TOT=sum(R,r=>r[4]),AVG=TOT/R.length;
+const by=(rows,i)=>{const m={};rows.forEach(r=>m[r[i]]=(m[r[i]]||0)+1);return Object.entries(m).sort((a,b)=>b[1]-a[1])};
+const DEP=Object.entries(R.reduce((m,r)=>(m[r[3]]=(m[r[3]]||0)+r[4],m),{})).sort((a,b)=>b[1]-a[1]);
+let sel="All",sk=4,sd=-1;
+
+// hero
+$("h1").textContent=inr(TOT)+" spent on treatment";
+$("hp").textContent=`${DEP[0][0]} accounts for the largest share (${Math.round(DEP[0][1]/TOT*100)}%). The average patient costs ${inr(AVG)}.`;
+const cc=by(R,5);
+$("cities").innerHTML=cc.map(([c,n],i)=>`<div class="${i?"":"hi"}"><b>${n}</b><span>${cap(c)}</span></div>`).join("");
+
+// sidebar
+function side(){
+  const items=[["All",TOT,R.length],...DEP.map(([d,v])=>[d,v,R.filter(r=>r[3]==d).length])];
+  $("side").innerHTML=items.map(([d,v,n])=>`<button class="dep" data-d="${d}" aria-pressed="${d==sel}"><span class="nm">${d=="All"?"All departments":d}</span><span class="cost">${inr(v)}</span><small>${n} patients, ${Math.round(v/TOT*100)}% of cost</small><i><u style="width:${v/TOT*100}%"></u></i></button>`).join("");
+  document.querySelectorAll(".dep").forEach(b=>b.onclick=()=>{sel=b.dataset.d;side();render()});
+}
+const heads=["ID","Age","Gender","Department","Cost","City"];
+function render(){
+  const rows=sel=="All"?R:R.filter(r=>r[3]==sel),n=rows.length,t=sum(rows,r=>r[4]),a=t/n,age=sum(rows,r=>r[1])/n;
+  $("title").textContent=sel=="All"?"All departments":sel;
+  const d=Math.round((a/AVG-1)*100);
+  $("ins").textContent=sel=="All"?`${n} patients, ${DEP.length} departments. Pick a department on the left to look closer.`:`${Math.round(t/TOT*100)}% of all treatment cost. Average cost is ${Math.abs(d)}% ${d>=0?"above":"below"} the hospital average.`;
+  $("stats").innerHTML=[[n,"Patients"],[inr(t),"Total cost"],[inr(a),"Average cost"],[age.toFixed(0)+" yrs","Average age"]].map(x=>`<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join("");
+  const bins=[0,0,0,0,0,0];rows.forEach(r=>bins[Math.floor((r[1]-20)/10)]++);const mb=Math.max(...bins);
+  $("hist").innerHTML=bins.map(v=>`<div>${v}<u style="height:${v/mb*100}%"></u></div>`).join("");
+  $("lab").innerHTML=["20s","30s","40s","50s","60s","70s"].map(x=>`<span>${x}</span>`).join("");
+  const cs=by(rows,5);$("cbars").innerHTML=cs.map(([c,v])=>`<div class="bar"><span>${cap(c)}</span><i><u style="width:${v/cs[0][1]*100}%"></u></i><b>${v}</b></div>`).join("");
+  const m=rows.filter(r=>r[2]=="Male").length,mp=m/n*100;
+  $("gen").innerHTML=`<u style="width:${mp}%;background:var(--b)"></u><u style="width:${100-mp}%;background:var(--a)"></u>`;
+  $("genl").innerHTML=`<span>Male ${m}</span><span>Female ${n-m}</span>`;
+  const s=[...rows].sort((x,y)=>(x[sk]>y[sk]?1:x[sk]<y[sk]?-1:0)*sd);
+  $("thead").innerHTML=heads.map((h,i)=>`<th data-i="${i}" tabindex="0" class="${i==4?"r":""}">${h}${i==sk?(sd>0?" ▲":" ▼"):""}</th>`).join("");
+  $("tb").innerHTML=s.map(r=>`<tr><td>#${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><span class="tag">${r[3]}</span></td><td class="r"><b>${inr(r[4])}</b></td><td>${cap(r[5])}</td></tr>`).join("");
+  document.querySelectorAll("th").forEach(h=>{const f=()=>{const i=+h.dataset.i;sd=(i==sk)?-sd:-1;sk=i;render()};h.onclick=f;h.onkeydown=e=>e.key=="Enter"&&f()});
+}
+side();render();
+const th=$("theme"),root=document.documentElement,dm=matchMedia("(prefers-color-scheme:dark)");
+const setT=d=>{root.dataset.theme=d?"dark":"light";th.textContent=d?"Light mode":"Dark mode"};
+setT(dm.matches);th.onclick=()=>setT(root.dataset.theme!=="dark");
+</script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sales Review 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EDF1F0;--ink:#13262B;--mute:#5B6E72;--line:#CBD6D4;--panel:#F8FAF9;--a:#0E6B68;--a2:#D9910B;--bad:#B4472F;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A1D;--ink:#E4EEEC;--mute:#8CA2A5;--line:#264047;--panel:#15252A;--a:#3FB8B2;--a2:#F0B13A;--bad:#E27C63}}
+:root[data-theme="dark"]{--bg:#0F1A1D;--ink:#E4EEEC;--mute:#8CA2A5;--line:#264047;--panel:#15252A;--a:#3FB8B2;--a2:#F0B13A;--bad:#E27C63}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:16px;line-height:1.55;font-variant-numeric:tabular-nums}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav div{max-width:1040px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:22px}
+.nav strong{font-weight:800;letter-spacing:-.02em;margin-right:auto;display:flex;align-items:center;gap:9px}
+.nav strong:before{content:"";width:12px;height:12px;border-radius:3px;background:var(--a2)}
+.nav a{color:var(--mute);text-decoration:none;font-size:14px}.nav a:hover{color:var(--ink)}
+.nav button{font:inherit;font-size:13px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:20px;padding:6px 14px;cursor:pointer}
+.wrap{max-width:1040px;margin:0 auto;padding:64px 22px 72px}
+h1{font-size:clamp(34px,6vw,64px);line-height:1.02;font-weight:800;letter-spacing:-.03em;margin:0 0 14px;max-width:16ch}
+.sub{color:var(--mute);max-width:56ch;margin:0 0 36px;font-size:18px}
+.kpis{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 24px -14px rgba(19,38,43,.35);margin-bottom:72px;overflow:hidden}
+.kpi{padding:22px 22px 18px}.kpi+.kpi{border-left:1px solid var(--line)}.kpi:first-child{background:var(--a);color:#fff}.kpi:first-child span{color:#D5EEEC}
+.kpi b{display:block;font-size:clamp(22px,3.2vw,36px);font-weight:600;letter-spacing:-.02em}
+.kpi span{color:var(--mute);font-size:14px}
+h2{font-size:28px;letter-spacing:-.02em;margin:0 0 6px;font-weight:600;padding-left:14px;border-left:5px solid var(--a2)}.lead{padding-left:19px}
+.lead{color:var(--mute);margin:0 0 20px;max-width:62ch}
+section{margin-bottom:88px;scroll-margin-top:70px}
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 8px 24px -16px rgba(19,38,43,.35)}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.readout{min-height:28px;margin-bottom:6px;font-size:15px;color:var(--mute)}.readout b{color:var(--ink);font-weight:600}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:16px}
+.seg button{font:inherit;font-size:14px;padding:8px 16px;background:transparent;color:var(--mute);border:0;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+button:focus-visible,tr:focus-visible{outline:3px solid var(--a2);outline-offset:2px}
+.row{display:grid;grid-template-columns:96px 1fr 150px;gap:12px;align-items:center;padding:7px 0;font-size:15px}
+.row .track{height:26px;background:var(--line);border-radius:4px;overflow:hidden}
+.row .fill{height:100%;background:var(--a);border-radius:4px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.row.top .fill{background:var(--a2)}
+.row .v{text-align:right;font-weight:600;line-height:1.2}.row small{display:block;color:var(--mute);font-weight:400;font-size:12px}
+.two{display:grid;grid-template-columns:1.1fr 1fr;gap:28px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font-weight:600;color:var(--mute);font-size:13px;padding:6px 8px;border-bottom:2px solid var(--ink)}
+td{padding:9px 8px;border-bottom:1px solid var(--line)}td.n,th.n{text-align:right}
+.scroll{overflow-x:auto}
+.heat td{text-align:center;font-weight:600;border:2px solid var(--panel)}
+.heat td:first-child{text-align:left;font-weight:400;background:none}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;border-top:1px solid var(--line);padding-top:20px}
+.facts p{margin:0;color:var(--mute)}.facts b{display:block;color:var(--ink);font-size:18px;font-weight:600;margin-bottom:4px}
+footer{color:var(--mute);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr}.kpi:nth-child(3){border-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--line)}.kpi:first-child{grid-column:1/-1}.two,.facts{grid-template-columns:1fr}.row{grid-template-columns:78px 1fr 92px}}
+@media(prefers-reduced-motion:reduce){.fill{transition:none}}
+tbody tr:hover td{background:color-mix(in srgb,var(--a) 8%,transparent)}
+.rk{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:12px;margin-right:10px}
+tbody tr:first-child .rk{background:var(--a2);color:#13262B}
+.mb{display:block;height:4px;border-radius:2px;background:var(--a);margin:5px 0 0 auto;max-width:100%}
+.facts>div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+.facts{border-top:0;padding-top:0}
+.heat{border-radius:12px;overflow:hidden}
+@media(max-width:760px){.nav a{display:none}.wrap{padding-top:40px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div><strong>Sales Review 2025</strong><a href="#months">Months</a><a href="#sources">Sources</a><a href="#people">Customers</a><button id="theme" aria-label="Switch light or dark theme">Dark mode</button></div></nav>
+<div class="wrap">
+  <h1 id="headline">Sales review 2025</h1>
+  <p class="sub" id="sub"></p>
+  <div class="kpis" id="kpis"></div>
+
+  <section id="months">
+    <h2>Month by month</h2>
+    <p class="lead" id="monthLead"></p>
+    <div class="chart">
+      <div class="readout" id="readout">Move over the chart to see a month.</div>
+      <svg id="line" viewBox="0 0 900 300" role="img" aria-label="Monthly sales line chart"></svg>
+    </div>
+  </section>
+
+  <section id="sources">
+    <h2>Where the sales come from</h2>
+    <p class="lead" id="splitLead"></p>
+    <div class="seg" role="group" aria-label="Group sales by">
+      <button data-k="cat" aria-pressed="true">Category</button>
+      <button data-k="chan" aria-pressed="false">Marketing channel</button>
+      <button data-k="city" aria-pressed="false">City</button>
+    </div>
+    <div class="chart" id="bars"></div>
+  </section>
+
+  <section class="two" id="people">
+    <div>
+      <h2>Top 10 customers</h2>
+      <p class="lead">Together they bring in <span id="topShare"></span> of all sales.</p>
+      <div class="scroll"><table id="top"><thead><tr><th>Customer</th><th>City</th><th class="n">Income</th><th class="n">Total sales</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div>
+      <h2>Order quality</h2>
+      <p class="lead">Number of orders by category. Darker means more orders.</p>
+      <div class="scroll"><table class="heat" id="heat"></table></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Does who the customer is change what they spend?</h2>
+    <p class="lead">Correlation runs from -1 to 1. Near 0 means no link.</p>
+    <div class="facts" id="facts"></div>
+  </section>
+
+  <footer>Built from marketing.db: 100 customers, 300 orders, January to December 2025. Amounts in rupees.</footer>
+</div>
+
+<script>
+const D={total:19447019,orders:300,cust:95,avg:64823.4,
+cat:{Grocery:5271011,clothes:5153241,electronics:4823076,Furniture:4199691},
+chan:{linkedin:5114083,google:5063834,instagram:4905815,facebook:4363287},
+city:{jabalpur:4168042,indore:4139284,bhopal:3917195,bina:3869747,itarsi:3352751},
+month:[1882545,1456279,1185834,1672045,1413024,1998011,1897003,1775540,1371484,1943135,1243222,1608897],
+qual:{"clothes|bad":19,"clothes|good":24,"clothes|very good":18,"clothes|excellent":18,"electronics|bad":16,"electronics|good":21,"electronics|very good":20,"electronics|excellent":19,"Furniture|bad":17,"Furniture|good":19,"Furniture|very good":11,"Furniture|excellent":17,"Grocery|bad":20,"Grocery|good":17,"Grocery|very good":21,"Grocery|excellent":23},
+top:[[1055,"indore",37480,592830],[1073,"itarsi",42839,481355],[1072,"bina",19111,475477],[1083,"bina",22889,468153],[1039,"itarsi",21635,467466],[1097,"bhopal",10559,456637],[1088,"jabalpur",20909,444263],[1002,"bina",46270,439763],[1017,"indore",13399,426711],[1059,"jabalpur",13752,409796]],
+corr:{ageInc:0.021,ageSales:0.05,incSales:-0.101}};
+const MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const cap=s=>s[0].toUpperCase()+s.slice(1);
+const inr=n=>"₹"+Math.round(n).toLocaleString("en-IN");
+const lakh=n=>"₹"+(n/1e5).toFixed(1)+" lakh";
+const $=id=>document.getElementById(id);
+const ent=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]);
+
+// header + KPIs
+const best=D.month.indexOf(Math.max(...D.month)),worst=D.month.indexOf(Math.min(...D.month));
+$("headline").textContent=inr(D.total)+" in sales across 300 orders";
+$("sub").textContent=`Grocery and clothes lead the categories, ${cap(ent(D.city)[0][0])} is the strongest city, and ${MN[best]} was the best month.`;
+$("kpis").innerHTML=[[inr(D.total),"Total sales"],[D.orders,"Orders"],[D.cust,"Customers who bought"],[inr(D.avg),"Average order"]].map(k=>`<div class="kpi"><b>${k[0]}</b><span>${k[1]}</span></div>`).join("");
+
+// line chart
+(function(){
+  const W=900,H=300,L=56,R=16,T=20,B=34,mx=2200000,svg=$("line");
+  const x=i=>L+i*(W-L-R)/11,y=v=>T+(1-v/mx)*(H-T-B);
+  let s="";
+  [0,500000,1000000,1500000,2000000].forEach(v=>{s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="12" fill="var(--mute)">${v/1e5}L</text>`});
+  MN.forEach((m,i)=>s+=`<text x="${x(i)}" y="${H-10}" text-anchor="middle" font-size="12" fill="var(--mute)">${m}</text>`);
+  const pts=D.month.map((v,i)=>x(i)+","+y(v)).join(" ");
+  s+=`<polygon points="${x(0)},${y(0)} ${pts} ${x(11)},${y(0)}" fill="var(--a)" opacity=".1"/><polyline points="${pts}" fill="none" stroke="var(--a)" stroke-width="3" stroke-linejoin="round"/>`;
+  D.month.forEach((v,i)=>{const c=i==best?"var(--a2)":i==worst?"var(--bad)":"var(--a)";s+=`<circle cx="${x(i)}" cy="${y(v)}" r="${i==best||i==worst?7:4}" fill="${c}"/>`});
+  s+=`<line id="cur" y1="${T}" y2="${H-B}" stroke="var(--ink)" stroke-dasharray="3 4" opacity="0"/>`;
+  svg.innerHTML=s;
+  $("monthLead").textContent=`${MN[best]} sold the most (${lakh(D.month[best])}). ${MN[worst]} was the weakest (${lakh(D.month[worst])}), ${Math.round((1-D.month[worst]/D.month[best])*100)}% below the peak.`;
+  const show=i=>{const c=$("cur");c.setAttribute("x1",x(i));c.setAttribute("x2",x(i));c.setAttribute("opacity",1);
+    const p=i?Math.round((D.month[i]/D.month[i-1]-1)*100):null;
+    $("readout").innerHTML=`<b>${MN[i]}</b>: ${inr(D.month[i])}`+(p===null?"":` (${p>=0?"+":""}${p}% vs ${MN[i-1]})`)};
+  const mv=e=>{const r=svg.getBoundingClientRect(),px=((e.touches?e.touches[0].clientX:e.clientX)-r.left)/r.width*W;
+    show(Math.max(0,Math.min(11,Math.round((px-L)/((W-L-R)/11)))))};
+  svg.addEventListener("mousemove",mv);svg.addEventListener("touchmove",mv,{passive:true});svg.addEventListener("click",mv);
+  show(best);
+})();
+
+// split bars
+const leads={cat:()=>{const e=ent(D.cat);return `${cap(e[0][0])} is first with ${Math.round(e[0][1]/D.total*100)}% of sales. Furniture is last, ${lakh(e[0][1]-e[3][1])} behind.`},
+chan:()=>{const e=ent(D.chan);return `${cap(e[0][0])} and ${cap(e[1][0])} are almost level. Facebook trails the leader by ${lakh(e[0][1]-e[3][1])}.`},
+city:()=>{const e=ent(D.city);return `${cap(e[0][0])} leads. ${cap(e[4][0])} sells ${Math.round((1-e[4][1]/e[0][1])*100)}% less, the biggest gap to close.`}};
+function draw(k){
+  const e=ent(D[k]),m=e[0][1],tot=e.reduce((a,x)=>a+x[1],0);
+  $("bars").innerHTML=e.map(([n,v],i)=>`<div class="row${i?"":" top"}"><span>${cap(n)}</span><div class="track"><div class="fill" style="width:0" data-w="${v/m*100}"></div></div><span class="v">${lakh(v)}<small>${Math.round(v/tot*100)}% of total</small></span></div>`).join("");
+  requestAnimationFrame(()=>requestAnimationFrame(()=>document.querySelectorAll(".fill").forEach(f=>f.style.width=f.dataset.w+"%")));
+  $("splitLead").textContent=leads[k]();
+}
+document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x==b));draw(b.dataset.k)});
+draw("cat");
+
+// top customers
+$("top").tBodies[0].innerHTML=D.top.map((r,i)=>`<tr><td><span class="rk">${i+1}</span>#${r[0]}</td><td>${cap(r[1])}</td><td class="n">${inr(r[2])}</td><td class="n"><b>${inr(r[3])}</b><i class="mb" style="width:${r[3]/D.top[0][3]*100}%"></i></td></tr>`).join("");
+$("topShare").textContent=Math.round(D.top.reduce((a,r)=>a+r[3],0)/D.total*100)+"%";
+
+// heat
+(function(){
+  const Q=["excellent","very good","good","bad"],C=["clothes","electronics","Furniture","Grocery"];
+  const vals=Object.values(D.qual),lo=Math.min(...vals),hi=Math.max(...vals);
+  let h="<tr><th></th>"+Q.map(q=>`<th style="text-align:center">${cap(q)}</th>`).join("")+"</tr>";
+  C.forEach(c=>{h+=`<tr><td>${cap(c)}</td>`+Q.map(q=>{const v=D.qual[c+"|"+q],t=(v-lo)/(hi-lo),col=q=="bad"?"var(--bad)":"var(--a)";
+    return `<td style="background:color-mix(in srgb,${col} ${12+t*60}%,var(--panel))">${v}</td>`}).join("")+"</tr>"});
+  $("heat").innerHTML=h;
+})();
+
+// correlation
+const w=v=>{const a=Math.abs(v);return a<0.15?"no real link":a<0.4?"a weak link":"a clear link"};
+$("facts").innerHTML=[["Age and sales",D.corr.ageSales],["Income and sales",D.corr.incSales],["Age and income",D.corr.ageInc]].map(([t,v])=>`<div><b>${t}: ${v>0?"+":""}${v.toFixed(2)}</b><p>There is ${w(v)}. ${t=="Income and sales"?"Richer customers do not spend more per order here.":t=="Age and sales"?"Older customers spend about the same as younger ones.":"Age does not predict income in this group."}</p></div>`).join("");
+const th=$("theme"),root=document.documentElement,dm=matchMedia("(prefers-color-scheme:dark)");
+const setT=d=>{root.dataset.theme=d?"dark":"light";th.textContent=d?"Light mode":"Dark mode"};
+setT(dm.matches);th.onclick=()=>setT(root.dataset.theme!=="dark");
+</script>
+</body>
+</html>
